@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 mars 2014 20:54:55 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pkgEntite.Joueur" table="joueur" catalog="slam42014">
+        <id name="jouCode" type="string">
+            <column name="JOU_CODE" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="jouNom" type="string">
+            <column name="JOU_NOM" length="25" not-null="true" />
+        </property>
+        <set name="parties" table="partie" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JOU_CODE" length="3" not-null="true" />
+            </key>
+            <one-to-many class="pkgEntite.Partie" />
+        </set>
+    </class>
+</hibernate-mapping>

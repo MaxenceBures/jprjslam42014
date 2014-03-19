@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 mars 2014 20:54:55 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="pkgEntite.Partie" table="partie" catalog="slam42014">
+        <id name="parNum" type="int">
+            <column name="PAR_NUM" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="joueur" class="pkgEntite.Joueur" fetch="select">
+            <column name="JOU_CODE" length="3" not-null="true" />
+        </many-to-one>
+        <property name="parDate" type="date">
+            <column name="PAR_DATE" length="10" not-null="true" />
+        </property>
+        <property name="parBon" type="int">
+            <column name="PAR_BON" not-null="true" />
+        </property>
+        <property name="parMauvais" type="int">
+            <column name="PAR_MAUVAIS" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
