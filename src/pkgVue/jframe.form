@@ -77,8 +77,8 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTxtaffichage" min="-2" pref="176" max="-2" attributes="0"/>
                           <Component id="jtxtnom" min="-2" pref="86" max="-2" attributes="0"/>
-                          <Component id="jlblaffichage" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -91,18 +91,18 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                      <Component id="jlblaffichage" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="jcbutilisateur" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace pref="6" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jTxtaffichage" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jtxtcode1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" pref="48" max="32767" attributes="0"/>
               <Component id="jtxtnom" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -144,11 +144,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnOkActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlblaffichage">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Proposition"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jbtnenregistrer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enregistrer"/>
@@ -180,6 +175,11 @@
     <Component class="javax.swing.JTextField" name="jtxtcode1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Code"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTxtaffichage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
   </SubComponents>

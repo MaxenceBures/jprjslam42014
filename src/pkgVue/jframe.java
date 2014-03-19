@@ -26,7 +26,7 @@ public class jframe extends javax.swing.JFrame {
     public jframe() {
         initComponents();
     }
-
+boolean charge = false;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,11 +39,11 @@ public class jframe extends javax.swing.JFrame {
         jbtnrejouer = new javax.swing.JButton();
         jbtnefface = new javax.swing.JButton();
         jbtnOk = new javax.swing.JButton();
-        jlblaffichage = new javax.swing.JLabel();
         jbtnenregistrer = new javax.swing.JButton();
         jcbutilisateur = new javax.swing.JComboBox();
         jtxtnom = new javax.swing.JTextField();
         jtxtcode1 = new javax.swing.JTextField();
+        jTxtaffichage = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -76,8 +76,6 @@ public class jframe extends javax.swing.JFrame {
             }
         });
 
-        jlblaffichage.setText("Proposition");
-
         jbtnenregistrer.setText("Enregistrer");
         jbtnenregistrer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +93,8 @@ public class jframe extends javax.swing.JFrame {
         jtxtnom.setText("Nom");
 
         jtxtcode1.setText("Code");
+
+        jTxtaffichage.setText("jTextField1");
 
         jMenu1.setText("File");
 
@@ -137,8 +137,8 @@ public class jframe extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtnom, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblaffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTxtaffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtnom, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -146,15 +146,15 @@ public class jframe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jlblaffichage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(80, 80, 80)
                         .addComponent(jcbutilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(22, 22, 22)
+                        .addComponent(jTxtaffichage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jtxtcode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 48, Short.MAX_VALUE)
                 .addComponent(jtxtnom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -196,7 +196,14 @@ public class jframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnenregistrerActionPerformed
 
     private void jcbutilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbutilisateurActionPerformed
-     
+
+if (charge == true){
+//String unJoueur = ((String)jcbutilisateur.getSelectedItem());
+Joueur unJoueur = (Joueur) (jcbutilisateur.getSelectedItem());
+String code = unJoueur.getJouCode();
+String nom = unJoueur.getJouNom();
+
+jTxtaffichage.setText(unJoueur.getJouCode());}
         //System.out.println(sResultat);
         /*Iterator joueur = qm.iterate();
         sResultat="";
@@ -211,6 +218,7 @@ public class jframe extends javax.swing.JFrame {
         jbtnrejouer.hide();
         jbtnenregistrer.hide();
         test();
+        
                // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
@@ -230,8 +238,12 @@ public class jframe extends javax.swing.JFrame {
         for(int i=0; i <lesJoueurs.size(); i++)
         {
             sResultat+=lesJoueurs.get(i).getJouNom()+ "\n";
-            jcbutilisateur.addItem(lesJoueurs.get(i).getJouNom());} 
+            jcbutilisateur.addItem(lesJoueurs.get(i).getJouNom());
+        charge = true;} 
+        jTxtaffichage.requestFocus();
+       // charge = true;
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -272,12 +284,12 @@ public class jframe extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JTextField jTxtaffichage;
     private javax.swing.JButton jbtnOk;
     private javax.swing.JButton jbtnefface;
     private javax.swing.JButton jbtnenregistrer;
     private javax.swing.JButton jbtnrejouer;
     private javax.swing.JComboBox jcbutilisateur;
-    private javax.swing.JLabel jlblaffichage;
     private javax.swing.JTextField jtxtcode1;
     private javax.swing.JTextField jtxtnom;
     // End of variables declaration//GEN-END:variables
