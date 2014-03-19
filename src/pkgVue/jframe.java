@@ -7,6 +7,7 @@
 package pkgVue;
 
 import java.util.List;
+import javax.swing.JComboBox;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -37,7 +38,7 @@ boolean charge = false;
     private void initComponents() {
 
         jbtnrejouer = new javax.swing.JButton();
-        jbtnefface = new javax.swing.JButton();
+        jbtnajouter = new javax.swing.JButton();
         jbtnOk = new javax.swing.JButton();
         jbtnenregistrer = new javax.swing.JButton();
         jcbutilisateur = new javax.swing.JComboBox();
@@ -62,10 +63,10 @@ boolean charge = false;
             }
         });
 
-        jbtnefface.setText("Efface");
-        jbtnefface.addActionListener(new java.awt.event.ActionListener() {
+        jbtnajouter.setText("Ajouter");
+        jbtnajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtneffaceActionPerformed(evt);
+                jbtnajouterActionPerformed(evt);
             }
         });
 
@@ -126,7 +127,7 @@ boolean charge = false;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jbtnefface))
+                                .addComponent(jbtnajouter))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jtxtcode1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -159,7 +160,7 @@ boolean charge = false;
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnOk)
-                    .addComponent(jbtnefface))
+                    .addComponent(jbtnajouter))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnrejouer)
@@ -174,9 +175,14 @@ boolean charge = false;
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnrejouerActionPerformed
 
-    private void jbtneffaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtneffaceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtneffaceActionPerformed
+    private void jbtnajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnajouterActionPerformed
+       Session session = HibernateUtil.getSessionFactory().openSession();
+        Joueur unNouveauJoueur = new Joueur(jtxtcode1.getText());
+        unNouveauJoueur.setJouNom(jtxtnom.getText());
+        Transaction tx = session.beginTransaction();
+        session.save(unNouveauJoueur);
+        tx.commit();   // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnajouterActionPerformed
 
     private void jbtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOkActionPerformed
   Session session = HibernateUtil.getSessionFactory().openSession();
@@ -199,11 +205,13 @@ boolean charge = false;
 
 if (charge == true){
 //String unJoueur = ((String)jcbutilisateur.getSelectedItem());
-Joueur unJoueur = (Joueur) (jcbutilisateur.getSelectedItem());
-String code = unJoueur.getJouCode();
+//Joueur unJoueur = (Joueur) (jcbutilisateur.getSelectedItem());
+JComboBox test = new JComboBox();
+test.getSelectedItem().toString();
+/*String code = unJoueur.getJouCode();
 String nom = unJoueur.getJouNom();
 
-jTxtaffichage.setText(unJoueur.getJouCode());}
+jTxtaffichage.setText(unJoueur.getJouCode());*/}
         //System.out.println(sResultat);
         /*Iterator joueur = qm.iterate();
         sResultat="";
@@ -214,7 +222,7 @@ jTxtaffichage.setText(unJoueur.getJouCode());}
     }//GEN-LAST:event_jcbutilisateurActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        jbtnefface.hide();
+       // jbtnajouter.hide();
         jbtnrejouer.hide();
         jbtnenregistrer.hide();
         test();
@@ -286,7 +294,7 @@ jTxtaffichage.setText(unJoueur.getJouCode());}
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTextField jTxtaffichage;
     private javax.swing.JButton jbtnOk;
-    private javax.swing.JButton jbtnefface;
+    private javax.swing.JButton jbtnajouter;
     private javax.swing.JButton jbtnenregistrer;
     private javax.swing.JButton jbtnrejouer;
     private javax.swing.JComboBox jcbutilisateur;
