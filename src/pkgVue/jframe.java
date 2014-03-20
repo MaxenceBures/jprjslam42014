@@ -7,11 +7,9 @@
 package pkgVue;
 
 import java.util.List;
-import javax.swing.JComboBox;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.event.RefreshEvent;
 import pkgEntite.HibernateUtil;
 import pkgEntite.Joueur;
 
@@ -38,7 +36,6 @@ boolean charge = false;
     private void initComponents() {
 
         jbtnrejouer = new javax.swing.JButton();
-        jbtnajouter = new javax.swing.JButton();
         jbtnOk = new javax.swing.JButton();
         jbtnenregistrer = new javax.swing.JButton();
         jcbutilisateur = new javax.swing.JComboBox();
@@ -63,14 +60,7 @@ boolean charge = false;
             }
         });
 
-        jbtnajouter.setText("Ajouter");
-        jbtnajouter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnajouterActionPerformed(evt);
-            }
-        });
-
-        jbtnOk.setText("Valider");
+        jbtnOk.setText("Ajouter");
         jbtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnOkActionPerformed(evt);
@@ -124,14 +114,8 @@ boolean charge = false;
                         .addComponent(jbtnenregistrer)
                         .addGap(57, 174, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jbtnajouter))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtxtcode1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtcode1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbtnOk)
                             .addComponent(jcbutilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -158,9 +142,7 @@ boolean charge = false;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 48, Short.MAX_VALUE)
                 .addComponent(jtxtnom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnOk)
-                    .addComponent(jbtnajouter))
+                .addComponent(jbtnOk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnrejouer)
@@ -174,15 +156,6 @@ boolean charge = false;
     private void jbtnrejouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnrejouerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnrejouerActionPerformed
-
-    private void jbtnajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnajouterActionPerformed
-       Session session = HibernateUtil.getSessionFactory().openSession();
-        Joueur unNouveauJoueur = new Joueur(jtxtcode1.getText());
-        unNouveauJoueur.setJouNom(jtxtnom.getText());
-        Transaction tx = session.beginTransaction();
-        session.save(unNouveauJoueur);
-        tx.commit();   // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnajouterActionPerformed
 
     private void jbtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOkActionPerformed
   Session session = HibernateUtil.getSessionFactory().openSession();
@@ -205,20 +178,16 @@ boolean charge = false;
 
 if (charge == true){
 //String unJoueur = ((String)jcbutilisateur.getSelectedItem());
-//Joueur unJoueur = (Joueur) (jcbutilisateur.getSelectedItem());
-JComboBox test = new JComboBox();
-test.getSelectedItem().toString();
-/*String code = unJoueur.getJouCode();
+Joueur unJoueur = ((Joueur)jcbutilisateur.getSelectedItem());
+//JComboBox test = new JComboBox();
+//test.getSelectedItem().toString();
+//jTxtaffichage.setText(test.toString());
+//jTxtaffichage.setText(unJoueur);
+String code = unJoueur.getJouCode();
 String nom = unJoueur.getJouNom();
 
-jTxtaffichage.setText(unJoueur.getJouCode());*/}
-        //System.out.println(sResultat);
-        /*Iterator joueur = qm.iterate();
-        sResultat="";
-        while (joueur.hasNext()){
-            Joueur leJoueur = (Joueur) joueur.next();
-            sResultat+=leJoueur.getJouNom()+"\n";
-        } System.out.println(sResultat); */  // TODO add your handling code here:
+jTxtaffichage.setText(unJoueur.getJouCode());}
+       
     }//GEN-LAST:event_jcbutilisateurActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -294,7 +263,6 @@ jTxtaffichage.setText(unJoueur.getJouCode());*/}
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTextField jTxtaffichage;
     private javax.swing.JButton jbtnOk;
-    private javax.swing.JButton jbtnajouter;
     private javax.swing.JButton jbtnenregistrer;
     private javax.swing.JButton jbtnrejouer;
     private javax.swing.JComboBox jcbutilisateur;
